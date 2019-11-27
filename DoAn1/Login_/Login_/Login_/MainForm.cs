@@ -43,31 +43,31 @@ namespace Login_
         private void mannageStudentFormToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageStudentsForm mnst = new ManageStudentsForm();
-            mnst.Show();
+            mnst.ShowDialog();         
         }
 
         private void printToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Print pr = new Print();
-            pr.Show();
+            pr.ShowDialog();
         }
 
         private void addCourseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddCourse add = new AddCourse();
-            add.Show();
+            add.ShowDialog();
         }
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveCourseForm re = new RemoveCourseForm();
-            re.Show();
+            re.ShowDialog();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EditCourseForm ed = new EditCourseForm();
-            ed.Show();
+            ed.ShowDialog();
         }
 
         private void cOURSEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -78,55 +78,59 @@ namespace Login_
         private void manageCourseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageCourseForm mn = new ManageCourseForm();
-            mn.Show(); 
+            mn.ShowDialog(); 
+            
         }
 
         private void printToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             PrintCourseForm pr = new PrintCourseForm();
-            pr.Show();
+            pr.ShowDialog();
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AddScoreForm ad = new AddScoreForm();
-            ad.Show();
+            ad.ShowDialog();
         }
 
         private void avgScoreByCourseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AvgForm av = new AvgForm();
-            av.Show();
+            av.ShowDialog();
         }
 
         private void rmoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RemoveScoreForm re = new RemoveScoreForm();
-            re.Show();
+            re.ShowDialog();
         }
 
         private void mangeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ManageScoreForm ma = new ManageScoreForm();
-            ma.Show();
+            ma.ShowDialog();
         }
 
         private void editRemoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateDeleteStudentForm up = new UpdateDeleteStudentForm();
-            up.Show();
+            up.ShowDialog();
         }
 
         private void staticsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Statics s = new Statics();
-            s.Show();
+            s.ShowDialog();
         }
 
         private void printResaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {          
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Result re = new Result();
-            re.Show();
+            Application.Restart();
         }
     }
 }

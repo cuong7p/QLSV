@@ -57,6 +57,8 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.button9 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -117,6 +119,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Location = new System.Drawing.Point(445, 76);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(10, 512);
@@ -222,6 +225,7 @@
             this.button3.TabIndex = 24;
             this.button3.Text = "SHOW FULL LIST";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // panel4
             // 
@@ -323,6 +327,7 @@
             // 
             // panel6
             // 
+            this.panel6.Controls.Add(this.label9);
             this.panel6.Controls.Add(this.pictureBox1);
             this.panel6.Location = new System.Drawing.Point(15, 6);
             this.panel6.Name = "panel6";
@@ -348,12 +353,34 @@
             this.label2.TabIndex = 19;
             this.label2.Text = "Group";
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Yellow;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(15, 506);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(127, 44);
+            this.button9.TabIndex = 29;
+            this.button9.Text = "LOG OUT";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(165, 21);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 17);
+            this.label9.TabIndex = 30;
+            this.label9.Text = "label9";
+            // 
             // HumanResourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
             this.ClientSize = new System.Drawing.Size(898, 590);
+            this.Controls.Add(this.button9);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
@@ -377,6 +404,7 @@
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -414,5 +442,7 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Label label9;
     }
 }

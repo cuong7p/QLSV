@@ -21,6 +21,9 @@ namespace Login_
         Contact ct = new Contact();
         Group gr = new Group();
         STUDENT st = new STUDENT();
+        MyDb mydb = new MyDb();
+        int x = Globals.GlobalUserId;
+
         private void button1_Click(object sender, EventArgs e)
         {
            
@@ -129,6 +132,7 @@ namespace Login_
 
         private void HumanResourceForm_Load(object sender, EventArgs e)
         {
+            getImageAndUsername();
             fillGroup();
             fillGroup2();
         }
@@ -140,6 +144,38 @@ namespace Login_
                 MessageBox.Show("Bạn đã  xóa liên lạc");
             else
                 MessageBox.Show("Lỗi ");
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            SqlCommand command = new SqlCommand("select * from mycontact");
+            DataTable table = new DataTable();
+            table = ct.SelectContactList(command);
+            SelectContactForm frm = new SelectContactForm();
+            frm.dataGridView1.DataSource = table;
+            frm.Show();
+        }
+
+        public void getImageAndUsername()
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter();
+            DataTable tb = new DataTable();
+            SqlCommand cmd = new SqlCommand("select * from hr where Id=@id", mydb.getConnection);
+            cmd.Parameters.Add("@id", SqlDbType.Int).Value = x;
+            adapter.SelectCommand = cmd;
+            adapter.Fill(tb);
+            if ((tb.Rows.Count > 0))
+            {
+                byte[] pic = (byte[])tb.Rows[0]["fig"];
+                MemoryStream picture = new MemoryStream(pic);
+                pictureBox1.Image = Image.FromStream(picture);
+                label9.Text = "Welcom Back (" + tb.Rows[0]["uname"].ToString().Trim() + ")";
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
         }
     }
 }

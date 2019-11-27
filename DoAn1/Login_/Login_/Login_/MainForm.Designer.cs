@@ -49,8 +49,8 @@
             this.rmoveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.avgScoreByCourseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.printResaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.logOutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +60,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sTUDENTToolStripMenuItem,
             this.cOURSEToolStripMenuItem,
-            this.sCOREToolStripMenuItem});
+            this.sCOREToolStripMenuItem,
+            this.logOutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1175, 28);
@@ -193,8 +194,7 @@
             this.addToolStripMenuItem,
             this.rmoveToolStripMenuItem,
             this.mangeToolStripMenuItem,
-            this.avgScoreByCourseToolStripMenuItem,
-            this.printResaultToolStripMenuItem});
+            this.avgScoreByCourseToolStripMenuItem});
             this.sCOREToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sCOREToolStripMenuItem.Name = "sCOREToolStripMenuItem";
             this.sCOREToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
@@ -232,19 +232,19 @@
             this.avgScoreByCourseToolStripMenuItem.Text = "Avg Score By Course ";
             this.avgScoreByCourseToolStripMenuItem.Click += new System.EventHandler(this.avgScoreByCourseToolStripMenuItem_Click);
             // 
-            // printResaultToolStripMenuItem
-            // 
-            this.printResaultToolStripMenuItem.BackColor = System.Drawing.Color.Gray;
-            this.printResaultToolStripMenuItem.Name = "printResaultToolStripMenuItem";
-            this.printResaultToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
-            this.printResaultToolStripMenuItem.Text = "Print Result";
-            this.printResaultToolStripMenuItem.Click += new System.EventHandler(this.printResaultToolStripMenuItem_Click);
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // logOutToolStripMenuItem
+            // 
+            this.logOutToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
+            this.logOutToolStripMenuItem.Size = new System.Drawing.Size(79, 24);
+            this.logOutToolStripMenuItem.Text = "Log Out";
+            this.logOutToolStripMenuItem.Click += new System.EventHandler(this.logOutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -286,6 +286,6 @@
         private System.Windows.Forms.ToolStripMenuItem rmoveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mangeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem avgScoreByCourseToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem printResaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem logOutToolStripMenuItem;
     }
 }

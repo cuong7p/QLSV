@@ -53,11 +53,12 @@ namespace Login_
                     //if (read.Read() == true)
                     if(table.Rows.Count>0)
                     {
+                        //MessageBox.Show("Đăng Nhập thành công");
+                        
                         MainForm mf = new MainForm();
                         mf.Show();
-                        //MessageBox.Show("Đăng Nhập thành công");
-                        //this.DialogResult = DialogResult.OK;
-                        //Close();
+                        this.Hide();
+
                     }
                     else MessageBox.Show("Đăng Nhập thất bại");
                 }
@@ -67,6 +68,7 @@ namespace Login_
                     {
                         HumanResourceForm h = new HumanResourceForm();
                         h.Show();
+                        this.Hide();
                     }
                     else MessageBox.Show("Đăng Nhập thất bại");
                 }

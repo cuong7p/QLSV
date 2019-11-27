@@ -21,6 +21,8 @@ namespace Login_
         }
         DataProvider con = new DataProvider();
         STUDENT st = new STUDENT();
+        Bitmap bitmap;
+
         private void Print_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'tbl_userDataSet.std' table. You can move, or remove it, as needed.
@@ -143,18 +145,34 @@ namespace Login_
        
         private void button3_Click(object sender, EventArgs e)
         {
-            PrintDialog printDialog = new PrintDialog();
-            PrintDocument printDocument = new PrintDocument();
-            printDialog.Document = printDocument;
-            if (printDialog.ShowDialog() == DialogResult.OK)
-            {
-                printDocument.Print();
-            }
+            //PrintDialog printDialog = new PrintDialog();
+            //PrintDocument printDocument = new PrintDocument();
+            //printDialog.Document = printDocument;
+            //if (printDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    printDocument.Print();
+            //}
+
+            //Resize DataGridView to full height.
+            int height = dataGridView1.Height;
+            dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height;
+
+            //Create a Bitmap and draw the DataGridView on it.
+            bitmap = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
+            dataGridView1.DrawToBitmap(bitmap, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
+
+            //Resize DataGridView back to original height.
+            dataGridView1.Height = height;
+
+            //Show the Print Preview Dialog.
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
         }
-        Bitmap b;
+       
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(b, 0, 0);
+            e.Graphics.DrawImage(bitmap, 0, 0);
         }
     }
 }

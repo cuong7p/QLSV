@@ -21,7 +21,7 @@ namespace Login_
         }
         Course c = new Course();
         DataProvider con = new DataProvider();
-
+        Bitmap bitmap;
         private void PrintCourseForm_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'tbl_userDataSet4.Course' table. You can move, or remove it, as needed.
@@ -60,16 +60,37 @@ namespace Login_
 
         private void button2_Click(object sender, EventArgs e)
         {
-            PrintDialog prdi = new PrintDialog();
-            PrintDocument prdc = new PrintDocument();
-            prdc.DocumentName = "Print Document";
-            prdi.Document = prdc;
-            prdi.AllowSelection = true;
-            prdi.AllowSomePages = true;
-            if(prdi.ShowDialog()==DialogResult.OK)
-            {
-                prdc.Print();
-            }
+            //PrintDialog prdi = new PrintDialog();
+            //PrintDocument prdc = new PrintDocument();
+            //prdc.DocumentName = "Print Document";
+            //prdi.Document = prdc;
+            //prdi.AllowSelection = true;
+            //prdi.AllowSomePages = true;
+            //if(prdi.ShowDialog()==DialogResult.OK)
+            //{
+            //    prdc.Print();
+            //}
+            //-------------------------------------------------------------------
+            //Resize DataGridView to full height.
+            int height = dataGridView1.Height;
+            dataGridView1.Height = dataGridView1.RowCount * dataGridView1.RowTemplate.Height;
+
+            //Create a Bitmap and draw the DataGridView on it.
+            bitmap = new Bitmap(this.dataGridView1.Width, this.dataGridView1.Height);
+            dataGridView1.DrawToBitmap(bitmap, new Rectangle(0, 0, this.dataGridView1.Width, this.dataGridView1.Height));
+
+            //Resize DataGridView back to original height.
+            dataGridView1.Height = height;
+
+            //Show the Print Preview Dialog.
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.PrintPreviewControl.Zoom = 1;
+            printPreviewDialog1.ShowDialog();
+        }
+
+        private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(bitmap, 0, 0);
         }
     }
 }
