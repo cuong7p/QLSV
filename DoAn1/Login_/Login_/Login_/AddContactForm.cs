@@ -20,6 +20,7 @@ namespace Login_
             InitializeComponent();
         }
         DataProvider con = new DataProvider();
+        Contact c = new Contact();
         private void AddContactForm_Load(object sender, EventArgs e)
         {
             Group gr = new Group();
@@ -36,13 +37,27 @@ namespace Login_
             string address = textBox5.Text;
             string email = textBox4.Text;
             int userid = Globals.GlobalUserId;
+
+            c.id = id;
+            c.fname = fname;
+            c.lname = lname;
+            c.phone = phone;
+            c.address = address;
+            c.email = email;
+            c.userid = userid;
+            
+
             try
             {
+
                 int groupid = (int)comboBox1.SelectedValue;
+                c.groupid = groupid;
+
                 MemoryStream pic = new MemoryStream();
-                pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
+                c.pic = pic;
+                pictureBox1.Image.Save(c.pic, pictureBox1.Image.RawFormat);
                 Contact contact = new Contact();
-                if(contact.insertContact(id,fname,lname,phone,address,email,userid,groupid,pic))
+                if(contact.insertContact(c.id,c.fname,c.lname,c.phone,c.address,c.email,c.userid,groupid,c.pic))
                 {
                     MessageBox.Show("New Contact Added", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

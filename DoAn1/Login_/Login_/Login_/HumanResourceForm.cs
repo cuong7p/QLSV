@@ -58,7 +58,12 @@ namespace Login_
             string name = textBox2.Text;
             int id = Convert.ToInt32(textBox4.Text);
             int uid = Globals.GlobalUserId;
-            if(gr.insertGroup(id,name,uid))
+
+            gr.id = id;
+            gr.gname = name;
+            gr.userid = uid;
+
+            if(gr.insertGroup(gr.id, gr.gname, gr.userid))
             {
                 MessageBox.Show("New Group Added", "Add Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -104,7 +109,12 @@ namespace Login_
         {
             int id_g = Convert.ToInt32(comboBox1.SelectedValue.ToString());
             string name = textBox3.Text;
-            if (gr.updateGroup(id_g, name))
+
+            gr.id = id_g;
+            gr.gname = name;
+           
+
+            if (gr.updateGroup(gr.id, gr.gname))
             {
                 MessageBox.Show("Đã cập nhật group");
                 fillGroup();
@@ -140,7 +150,8 @@ namespace Login_
         private void button4_Click_1(object sender, EventArgs e)
         {
             int id = Convert.ToInt32(textBox1.Text);
-            if (ct.deleteContact(id))
+            ct.id = id;
+            if (ct.deleteContact(ct.id))
                 MessageBox.Show("Bạn đã  xóa liên lạc");
             else
                 MessageBox.Show("Lỗi ");

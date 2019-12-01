@@ -33,8 +33,9 @@ namespace Login_
         private void button1_Click(object sender, EventArgs e)
         {
             int id = int.Parse(textBox1.Text);
+            st.id = id;
             //string sql = "SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE id = ";
-            SqlCommand cmd = new SqlCommand("SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE id = " + id);
+            SqlCommand cmd = new SqlCommand("SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE id = " + st.id);
 
             DataTable da = st.getStudents(cmd, con);
 
@@ -58,7 +59,8 @@ namespace Login_
 
                 byte[] pic = (byte[])da.Rows[0]["picture"];
                 MemoryStream picture = new MemoryStream(pic);
-                pictureBox1.Image = Image.FromStream(picture);
+                st.pic = picture;
+                pictureBox1.Image = Image.FromStream(st.pic);
             }
 
             else
@@ -79,8 +81,9 @@ namespace Login_
         private void button5_Click(object sender, EventArgs e)
         {
             string phone = textBox4.Text;
+            st.phone = phone;
             //string sql = "SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE id = ";
-            SqlCommand cmd = new SqlCommand("SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE phone = " + phone);
+            SqlCommand cmd = new SqlCommand("SELECT id, fname, lname, bdate, gender, phone, address, picture FROM std WHERE phone = " + st.phone);
 
             DataTable da = st.getStudents(cmd, con);
 
@@ -104,7 +107,8 @@ namespace Login_
 
                 byte[] pic = (byte[])da.Rows[0]["picture"];
                 MemoryStream picture = new MemoryStream(pic);
-                pictureBox1.Image = Image.FromStream(picture);
+                st.pic = picture;
+                pictureBox1.Image = Image.FromStream(st.pic);
             }
 
             else
@@ -146,9 +150,10 @@ namespace Login_
             try
             {
                 int studentId = Convert.ToInt32(textBox1.Text);
+                st.id = studentId;
                 if(MessageBox.Show("Are You Sure Want To Delete This Student", "Delete Student",MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
                 {
-                    if(st.deleteStudent(studentId,con))
+                    if(st.deleteStudent(st.id, con))
                     {
                         MessageBox.Show("Student Deleted", "Deleted Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -206,7 +211,17 @@ namespace Login_
             MemoryStream pic = new MemoryStream();
             int born_year = dateTimePicker1.Value.Year;
             int this_year = DateTime.Now.Year;
-            if((this_year-born_year)<10||(this_year-born_year)>100)
+
+            
+            st.fname = fname;
+            st.lname = lname;
+            st.bdate = bdate;
+            st.phone = phone;
+            st.address = adrs;
+            st.gender = gender;
+            st.pic = pic;
+
+            if ((this_year-born_year)<10||(this_year-born_year)>100)
             {
                 MessageBox.Show("The Student Age Must Be Between 10 and 100 year", "Birth Date Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -215,9 +230,9 @@ namespace Login_
                 try
                 {
                     id = Convert.ToInt32(textBox1.Text);
-
+                    st.id = id;
                     pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
-                    if(st.updateStudent(id, fname, lname, bdate, gender, phone, adrs, pic,  con))
+                    if(st.updateStudent(st.id, st.fname, st.lname, st.bdate, st.gender, st.phone, st.address, st.pic,  con))
                     {
                         MessageBox.Show("Student Information Updated", "Edit Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

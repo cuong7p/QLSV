@@ -45,14 +45,23 @@ namespace Login_
             int born_year = dateTimePicker1.Value.Year;
             int this_year = DateTime.Now.Year;
 
+            st.id = id;
+            st.fname = fname;
+            st.lname = lname;
+            st.bdate = bdate;
+            st.phone = phone;
+            st.address = adrs;
+            st.gender = gender;
+            st.pic = pic;
+
             if (((this_year - born_year) < 10) || (this_year - born_year) > 100)
             {
                 MessageBox.Show("The Student Age Must Be Between 10 and 100 year", "Invalid Birth Date", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (verif())
             {
-                pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
-                if (st.insertStudent(id, fname, lname, bdate, gender, phone, adrs, pic, con))
+                pictureBox1.Image.Save(st.pic, pictureBox1.Image.RawFormat);
+                if (st.insertStudent(st.id, st.fname, st.lname, st.bdate, st.gender, st.phone, st.address, st.pic, con))
                 {
                     MessageBox.Show("New Student Added", "Add Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -98,6 +107,16 @@ namespace Login_
             MemoryStream pic = new MemoryStream();
             int born_year = dateTimePicker1.Value.Year;
             int this_year = DateTime.Now.Year;
+
+            st.id = id;
+            st.fname = fname;
+            st.lname = lname;
+            st.bdate = bdate;
+            st.phone = phone;
+            st.address = adrs;
+            st.gender = gender;
+            st.pic = pic;
+
             if ((this_year - born_year) < 10 || (this_year - born_year) > 100)
             {
                 MessageBox.Show("The Student Age Must Be Between 10 and 100 year", "Birth Date Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -108,8 +127,8 @@ namespace Login_
                 {
                     id = Convert.ToInt32(textBox1.Text);
 
-                    pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
-                    if (st.updateStudent(id, fname, lname, bdate, gender, phone, adrs, pic, con))
+                    pictureBox1.Image.Save(st.pic, pictureBox1.Image.RawFormat);
+                    if (st.updateStudent(st.id, st.fname, st.lname, st.bdate, st.gender, st.phone, st.address, st.pic, con))
                     {
                         MessageBox.Show("Student Information Updated", "Edit Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -135,9 +154,10 @@ namespace Login_
             try
             {
                 int studentId = Convert.ToInt32(textBox1.Text);
+                st.id = studentId;
                 if (MessageBox.Show("Are You Sure Want To Delete This Student", "Delete Student", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (st.deleteStudent(studentId, con))
+                    if (st.deleteStudent(st.id, con))
                     {
                         MessageBox.Show("Student Deleted", "Deleted Student", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -269,7 +289,8 @@ namespace Login_
             byte[] pic;
             pic = (byte[])dataGridView1.CurrentRow.Cells[7].Value;
             MemoryStream picture = new MemoryStream(pic);
-            pictureBox1.Image = Image.FromStream(picture);
+            st.pic = picture;
+            pictureBox1.Image = Image.FromStream(st.pic);
             label9.Text = ("Total Students : " + dataGridView1.Rows.Count);
         }
 

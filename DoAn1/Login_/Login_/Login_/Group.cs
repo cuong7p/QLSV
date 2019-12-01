@@ -20,6 +20,19 @@ namespace Login_
     }
     class Group
     {
+        public int id { get; set; }
+        public string gname { get; set; }
+        public int userid { get; set; }
+
+        public void group() { }
+        public void group(int id, string gname, int userid)
+        {
+            this.id = id;
+            this.gname = gname;
+            this.userid = userid;
+        }
+
+
         DataProvider con = new DataProvider();
         MyDb db = new MyDb();
         public bool insertGroup(int id, string gname, int userid)

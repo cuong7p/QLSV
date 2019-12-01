@@ -24,6 +24,12 @@ namespace Login_
             string cname = textBox2.Text;
             int per = Convert.ToInt32(textBox3.Text);
             string des = textBox4.Text;
+
+            c.cId = cid;
+            c.cname = cname;
+            c.per = per;
+            c.des = des;
+
             con.connect();
             if (per<=10)
             {
@@ -31,7 +37,7 @@ namespace Login_
             }
             else if (verif())
             {
-                if (c.insertCourse(cid, cname, per, des, con))
+                if (c.insertCourse(c.cId, c.cname, c.per, c.des, con))
                 {
                     MessageBox.Show("New Course Added", "Add Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

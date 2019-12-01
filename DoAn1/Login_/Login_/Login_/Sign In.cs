@@ -39,11 +39,18 @@ namespace Login_
             string username = textBox4.Text;
             string pass = textBox5.Text;
             MemoryStream pic = new MemoryStream();
-                     
+
+            u.id = id;
+            u.fname = fname;
+            u.lname = lname;
+            u.username = username;
+            u.pass = pass;
+            u.pic = pic;
+
             if (verif())
             {
-                pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
-                if (u.insertUser(id, fname, lname, username, pass, pic))
+                pictureBox1.Image.Save(u.pic, pictureBox1.Image.RawFormat);
+                if (u.insertUser(u.id, u.fname, u.lname, u.username, u.pass, u.pic))
                 {
                     MessageBox.Show("New User Added", "Add  User", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

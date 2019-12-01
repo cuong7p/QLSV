@@ -12,6 +12,31 @@ namespace Login_
 {
     class Contact
     {
+        public int id { get; set; }
+        public string fname { get; set; }
+        public string lname { get; set; }  
+        public int groupid { get; set; }
+        public string phone { get; set; }
+        public string email { get; set; }
+        public string address { get; set; }
+        public int userid { get; set; }
+        public MemoryStream pic { get; set; }
+
+        public void contact() { }
+        public void contact(int id, string fname, string lname, string phone, string email, string address, int userid,int groupid, MemoryStream pic)
+        {
+            this.id = id;
+            this.fname = fname;
+            this.lname = lname;
+            this.phone = phone;
+            this.email = email;
+            this.address = address;
+            this.userid = userid;
+            this.pic = pic;
+        }
+
+
+
         MyDb con = new MyDb();
         public bool insertContact(int id, string fname, string lname, string phone, string address, string email, int userid, int groupid, MemoryStream picture)
         {

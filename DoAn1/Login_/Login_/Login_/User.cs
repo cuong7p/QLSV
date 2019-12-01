@@ -12,6 +12,25 @@ namespace Login_
 {
     class User
     {
+        public int id { get; set; }
+        public string fname { get; set; }
+        public string lname { get; set; }
+        public string username { get; set; }
+        public string pass { get; set; }
+        public MemoryStream pic { get; set; }
+
+
+        public void user() { }
+        public void user(int id, string fname, string lname, string username, string pass, MemoryStream pic)
+        {
+            this.id = id;
+            this.fname = fname;
+            this.lname = lname;
+            this.username = username;
+            this.pass = pass;
+            this.pic = pic;
+        }
+
         DataProvider con = new DataProvider();
         public DataTable getUserById(Int32 userid)
         {

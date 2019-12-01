@@ -1,19 +1,34 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 
 namespace Login_
 {
     class STUDENT
     {
+        public int id { get; set; }
+        public string fname { get; set; }
+        public string lname { get; set; }
+        public DateTime bdate { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
+        public string gender { get; set; }
+        public MemoryStream pic { get; set; }
+
+        public void student() { }
+        public void student(int id, string fname, string lname, DateTime bdate, string phone, string address, string gender, MemoryStream pic)
+        {
+            this.id = id;
+            this.fname = fname;
+            this.lname = lname;
+            this.bdate = bdate;
+            this.phone = phone;
+            this.address = address;
+            this.gender = gender;
+            this.pic = pic;
+        }
+
         public bool insertStudent(int Id, string fname, string lname, DateTime bdate, string gender, string phone, string address, MemoryStream picture, DataProvider con)
         {
             SqlCommand command = new SqlCommand("INSERT INTO std(id, fname, lname, bdate, gender, phone, address, picture)" +

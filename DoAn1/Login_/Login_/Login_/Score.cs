@@ -12,6 +12,21 @@ namespace Login_
 {
     class Score
     {
+        public int id { get; set; }
+        public int cid { get; set; }
+        public float score { get; set; }
+        public string des { get; set; }
+
+        public void SCORE() { }
+        public void SCORE(int id, int cid, float score, string des)
+        {
+            this.id = id;
+            this.cid = cid;
+            this.score = score;
+            this.des = des;
+        }
+
+
         DataProvider con = new DataProvider();
         public bool insertScore(int sid, int cid, float score, string des)
         {

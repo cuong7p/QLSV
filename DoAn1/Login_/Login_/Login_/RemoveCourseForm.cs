@@ -23,9 +23,10 @@ namespace Login_
             try
             {
                 int Id = Convert.ToInt32(textBox1.Text);
+                c.cId = Id;
                 if (MessageBox.Show("Are You Sure Want To Delete This Course", "Delete Course", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (c.deleteCourse(Id, con))
+                    if (c.deleteCourse(c.cId, con))
                     {
                         MessageBox.Show("Course Deleted", "Deleted Course", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

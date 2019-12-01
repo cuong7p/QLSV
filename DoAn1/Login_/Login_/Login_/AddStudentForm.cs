@@ -4,8 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;              //Nguyen Huy Cuong
-using System.Threading.Tasks;   //17110107
+using System.Text;              
+using System.Threading.Tasks;  
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data;
@@ -19,7 +19,7 @@ namespace Login_
         {
             InitializeComponent();
         }
-
+        STUDENT st = new STUDENT();
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -32,7 +32,7 @@ namespace Login_
 
         private void button3_Click(object sender, EventArgs e)
         {
-            STUDENT st = new STUDENT();
+          
             int id = Convert.ToInt32(textBox1.Text);
             string fname = textBox2.Text;
             string lname = textBox3.Text;
@@ -52,6 +52,16 @@ namespace Login_
             int born_year = dateTimePicker1.Value.Year;
             int this_year = DateTime.Now.Year;
 
+            st.id = id;
+            st.fname = fname;
+            st.lname = lname;
+            st.bdate = bdate;
+            st.phone = phone;
+            st.address = adrs;
+            st.gender = gender;
+            st.pic = pic;
+
+
             if( ((this_year-born_year)<10)||(this_year-born_year)>100)
             {
                 MessageBox.Show("The Student Age Must Be Between 10 and 100 year", "Invalid Birth Date", MessageBoxButtons.OK, MessageBoxIcon.Error);            
@@ -59,7 +69,7 @@ namespace Login_
             else if(verif())
             {
                 pictureBox1.Image.Save(pic, pictureBox1.Image.RawFormat);
-                if(st.insertStudent(id, fname, lname, bdate, gender, phone, adrs, pic, con))
+                if(st.insertStudent(st.id, st.fname, st.lname, st.bdate, st.gender, st.phone, st.address, st.pic, con))
                 {
                     MessageBox.Show("New Student Added", "Add Student", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

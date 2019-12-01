@@ -33,9 +33,15 @@ namespace Login_
                 int cID = (int)ComboBoxSelCourse.SelectedValue;
                 float score = Convert.ToInt32(TextBoxScore.Text.Trim());
                 string des = TextBoxDescription.Text.Trim();
-                if (!s.studentScoreExit(stdID, Convert.ToInt32(ComboBoxSelCourse.SelectedValue)))
+
+                s.id = stdID;
+                s.cid = cID;
+                s.score = score;
+                s.des = des;
+
+                if (!s.studentScoreExit(s.id, Convert.ToInt32(ComboBoxSelCourse.SelectedValue)))
                 {
-                    if (s.insertScore(stdID, cID, score, des))
+                    if (s.insertScore(s.id, s.cid, s.score, s.des))
                     {
                         MessageBox.Show("New Score Added", "Add Score", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

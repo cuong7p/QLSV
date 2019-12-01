@@ -12,6 +12,22 @@ namespace Login_
 {
     class Course
     {
+        public int cId { get; set; }
+        public string cname { get; set; }
+        public int per { get; set; }
+        public string des { get; set; }
+
+        public void course() { }
+        public void course(int cid, string cname, int per, string des)
+        {
+            this.cId = cid;
+            this.cname = cname;
+            this.per = per;
+            this.des = des;
+        }
+
+
+
         public bool checkCourseName(string courseName, int courseID, DataProvider con)
         {
             courseID = 0;

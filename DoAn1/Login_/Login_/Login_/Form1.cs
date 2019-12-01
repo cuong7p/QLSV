@@ -33,13 +33,18 @@ namespace Login_
         private void button1_Click_1(object sender, EventArgs e)
         {
             DataProvider provider = new DataProvider();
+            User u = new User();
             provider.connect();
             try
             {
                 string tk = textBox1.Text;
                 string mk = textBox2.Text;
-                string sql = "select * from tbl_user where user_name='" + tk + "' and user_pass='" + mk + "'";
-                string sql1 = "select * from hr where uname='" + tk + "' and pwd='" + mk + "'";
+
+                u.username = tk;
+                u.pass = mk;
+
+                string sql = "select * from tbl_user where user_name='" + u.username + "' and user_pass='" + u.pass + "'";
+                string sql1 = "select * from hr where uname='" + u.username + "' and pwd='" + u.pass + "'";
                 SqlCommand connect = new SqlCommand(sql1, provider.connection);
                 //SqlDataReader read = connect.ExecuteReader();
                 DataTable table = new DataTable();

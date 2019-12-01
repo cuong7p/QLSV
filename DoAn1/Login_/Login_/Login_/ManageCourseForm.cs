@@ -54,13 +54,18 @@ namespace Login_
             string name = textBox2.Text;
             int hrs = (int)numericUpDown1.Value;
             string descr = textBox3.Text;
+
+            c.cId = id;
+            c.cname = name;
+            c.per = hrs;
+            c.des = descr;
             if(name.Trim()=="")
             {
                 MessageBox.Show("Add A Course Name", "Add Course", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
-            else if(c.checkCourseName(name, id, con))
+            else if(c.checkCourseName(c.cname, c.cId, con))
             {
-                if(c.insertCourse(id,name,hrs,descr,con))
+                if(c.insertCourse(c.cId, c.cname, c.per, c.des, con))
                 {
                     MessageBox.Show("New Course Inserted", "Add Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reloadListBoxData();
@@ -83,11 +88,16 @@ namespace Login_
             int hrs = (int)numericUpDown1.Value;
             string descr = textBox3.Text;
 
-            if (!c.checkCourseName(name, id, con))
+            c.cId = id;
+            c.cname = name;
+            c.per = hrs;
+            c.des = descr;
+
+            if (!c.checkCourseName(c.cname, c.cId, con))
             {
                 MessageBox.Show("This Course Name Already Exist", "Edit Course", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (c.updateStudent(id, name, hrs, descr, con))
+            else if (c.updateStudent(c.cId, c.cname, c.per, c.des, con))
             {
                 MessageBox.Show("Course Updated", "Edit Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 reloadListBoxData();
@@ -104,9 +114,10 @@ namespace Login_
             try
             {
                 int Id = Convert.ToInt32(textBox1.Text);
+                c.cId = Id;
                 if (MessageBox.Show("Are You Sure Want To Delete This Course", "Delete Course", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (c.deleteCourse(Id, con))
+                    if (c.deleteCourse(c.cId, con))
                     {
                         MessageBox.Show("Course Deleted", "Deleted Course", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

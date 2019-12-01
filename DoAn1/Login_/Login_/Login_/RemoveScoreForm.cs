@@ -28,11 +28,15 @@ namespace Login_
         {
             int sid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[0].Value.ToString());
             int cid = Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value.ToString());
+
+            s.id = sid;
+            s.cid = cid;
+
             try
             {
                 if (MessageBox.Show("Are You Sure Want To Delete This Score", "Delete Score", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (s.deleteScore(sid,cid))
+                    if (s.deleteScore(s.id, s.cid))
                     {
                         MessageBox.Show("Score Deleted", "Deleted Score", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         reload();

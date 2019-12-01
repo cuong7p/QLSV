@@ -38,8 +38,9 @@ namespace Login_
             try
             {
                 int id = Convert.ToInt32(comboBox1.SelectedValue);
+                c.cId = id;
                 DataTable table = new DataTable();
-                table = c.getCourseById(id, con);
+                table = c.getCourseById(c.cId, con);
                 textBox1.Text = table.Rows[0][1].ToString();
                 numericUpDown1.Value = Int32.Parse(table.Rows[0][2].ToString());
                 textBox2.Text = table.Rows[0][3].ToString();
@@ -54,11 +55,16 @@ namespace Login_
             string des = textBox2.Text;
             int id = (int)comboBox1.SelectedValue;
 
+            c.cId = id;
+            c.cname = name;
+            c.per = h;
+            c.des = des;
+
             if(!c.checkCourseName(name,Convert.ToInt32(comboBox1.SelectedValue),con))
             {
                 MessageBox.Show("This Course Name Already Exist", "Edit Course", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if(c.updateStudent(id,name,h,des,con))
+            else if(c.updateStudent(c.cId, c.cname, c.per, c.des, con))
             {
                 MessageBox.Show("Course Updated", "Edit Course", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

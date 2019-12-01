@@ -55,14 +55,20 @@ namespace Login_
             float scr = Convert.ToInt32(textBox2.Text);           
             string des = textBox3.Text;
             int cid = (int)comboBox1.SelectedValue;
+
+            s.id = sid;
+            s.score = scr;
+            s.des = des;
+            s.cid = cid;
+
             con.connect();
             if (textBox1.Text == "")
             {
                 MessageBox.Show("Add A Score", "Add Score", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if (!s.studentScoreExit(sid, cid))
+            else if (!s.studentScoreExit(s.id, s.cid))
             {
-                if (s.insertScore(sid,cid,scr,des))
+                if (s.insertScore(s.id, s.cid, s.score, s.des))
                 {
                     MessageBox.Show("New Score Added", "Add Score", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reload();
