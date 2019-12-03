@@ -24,15 +24,12 @@ namespace Login_
 
         private void addNewStudentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddStudentForm addStdF = new AddStudentForm();
-            addStdF.Show(this);
+            
         }
 
         private void studentListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            studentListForm st = new studentListForm();
-            st.Show();
-            //st.Close();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -54,20 +51,17 @@ namespace Login_
 
         private void addCourseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddCourse add = new AddCourse();
-            add.ShowDialog();
+            
         }
 
         private void removeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveCourseForm re = new RemoveCourseForm();
-            re.ShowDialog();
+           
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EditCourseForm ed = new EditCourseForm();
-            ed.ShowDialog();
+            
         }
 
         private void cOURSEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -90,8 +84,7 @@ namespace Login_
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddScoreForm ad = new AddScoreForm();
-            ad.ShowDialog();
+            
         }
 
         private void avgScoreByCourseToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,8 +95,7 @@ namespace Login_
 
         private void rmoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            RemoveScoreForm re = new RemoveScoreForm();
-            re.ShowDialog();
+           
         }
 
         private void mangeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,8 +106,7 @@ namespace Login_
 
         private void editRemoveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UpdateDeleteStudentForm up = new UpdateDeleteStudentForm();
-            up.ShowDialog();
+           
         }
 
         private void staticsToolStripMenuItem_Click(object sender, EventArgs e)
